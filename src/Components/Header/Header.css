@@ -1,0 +1,35 @@
+.header {
+    display: flex;
+    align-items: center;
+    padding: 32px 0 28px;
+    font-size: 20px;
+    line-height: 24.8px;
+  }
+  
+  .header__logo {
+    width: 89px;
+    height: 40px;
+    padding-right: 24px;
+  }
+  
+  .header__date_time {
+    margin: 0;
+  }
+  
+  .header__add_clothes {
+    margin-left: auto;
+    border: none;
+    padding-right: 20px;
+    background: none;
+    font-weight: 700;
+  }
+  
+  .header__user_info {
+    display: flex;
+    align-items: center;
+    margin: 0;
+  }
+  
+  .header__username {
+    padding-right: 12px;
+  }
