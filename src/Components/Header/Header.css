@@ -11,6 +11,12 @@
     height: 40px;
     padding-right: 24px;
   }
+  .header__add_clothes{
+    opacity: 1;
+  }
+  .header__add_clothes:hover{
+    opacity: 0.2;
+  }
   
   .header__date_time {
     margin: 0;
