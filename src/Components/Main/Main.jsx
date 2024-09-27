@@ -5,10 +5,10 @@ import ItemCard from "../itemcard/ItemCard";
 function Main({weatherData,handleCardClick}){
     return(
     <main>
-    <WeatherCard/>
+    <WeatherCard weatherData={weatherData}/>
     <section className="cards">
         <p className="cards__text">Today is {weatherData.temp.F}F / You may want to wear;</p>
-        <ul className="item__cards_list">
+        <ul className="cards__list">
           {defaultClothingItems
             .filter((item) => item.weather === weatherData.type)
             .map((item) => (
