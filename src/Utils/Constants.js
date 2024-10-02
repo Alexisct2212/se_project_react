@@ -1,3 +1,4 @@
+//clothes cards(images)
 export const defaultClothingItems = [
     {
       _id: 0,
@@ -35,6 +36,86 @@ export const defaultClothingItems = [
       weather: "cold",
       link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Coat.png?etag=298717ed89d5e40b1954a1831ae0bdd4",
     }
+  ];
+  // weather cards 
+  export const defaultWeatherOptions = {
+    day: {
+      url: new URL("../assets/day/default-day.png", import.meta.url).href,
+    },
+    night: {
+      url: new URL("../assets/night/default-night.png", import.meta.url).href,
+    },
+  };
+  
+  export const weatherOptions = [
+    {
+      day: true,
+      condition: "clear",
+      url: new URL("../assets/day/Sunny__weather.png", import.meta.url).href,
+    },
+    {
+      day: true,
+      condition: "clouds",
+      url: new URL("../assets/day/Cloudy__weather.png", import.meta.url).href,
+    },
+  
+    {
+      day: true,
+      condition: "rain",
+      url: new URL("../assets/day/rain__weather.png", import.meta.url).href,
+    },
+  
+    {
+      day: true,
+      condition: "storm",
+      url: new URL("../assets/day/Storm__weather.png", import.meta.url).href,
+    },
+  
+    {
+      day: true,
+      condition: "snow",
+      url: new URL("../assets/day/Snow__weather.png", import.meta.url).href,
+    },
+    {
+      day: true,
+      condition: "fog",
+      url: new URL("../assets/day/Fog__weather.png", import.meta.url).href,
+    },
+  
+    {
+      day: false,
+      condition: "clear",
+      url: new URL("../assets/night/Night__weather.png", import.meta.url).href,
+    },
+    {
+      day: false,
+      condition: "clouds",
+      url: new URL("../assets/night/Night__Cloudy-weather.png", import.meta.url).href,
+    },
+  
+    {
+      day: false,
+      condition: "rain",
+      url: new URL("../assets/night/Night__rain-weather.png", import.meta.url).href,
+    },
+  
+    {
+      day: false,
+      condition: "storm",
+      url: new URL("../assets/night/Night__storm-weather.png", import.meta.url).href,
+    },
+  
+    {
+      day: false,
+      condition: "snow",
+      url: new URL("../assets/night/Night__snow-weather.png", import.meta.url).href,
+    },
+  
+    {
+      day: false,
+      condition: "fog",
+      url: new URL("../assets/night/Night__Fog-weather.png", import.meta.url).href,
+    },
   ];
 
   export const coordinates = {
