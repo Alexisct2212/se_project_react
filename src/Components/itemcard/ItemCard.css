@@ -12,9 +12,15 @@ top: 15px;
 margin:0;
 padding: 2px 12px 2px 12px;
 background-color:#fff;
+color: rgba(0, 0, 0, 0.6);
 border-radius: 4px;
+font-weight: 700;
+font-size: 23px;
+font-family: "CabinetGrotesk";
+height: 24px;
 }
 .card__image{
     width: 100%;
     border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.3) ;
 }

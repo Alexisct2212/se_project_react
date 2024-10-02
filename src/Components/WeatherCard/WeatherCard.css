@@ -13,6 +13,10 @@ overflow: hidden;
     top: 20px;
     left: 16px;
     color: aliceblue;
+    font-weight: 700;
+    font-family: "CabinetGrotesk";
+    height: 40px;
+
 }
 .weather__card-image{
     object-fit: cover;
