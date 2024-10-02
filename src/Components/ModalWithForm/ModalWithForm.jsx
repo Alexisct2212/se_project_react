@@ -8,7 +8,7 @@ function ModalWithForm({children, title, buttonText,activeModal,onClose}){
             <button className="modal__close" onClick={onClose}></button>
         <form className="modal__form">
             {children}
-            <button className="modal__submit" type="submit">{buttonText}</button>
+            <button className="modal__submit" type="submit" disabled>{buttonText}</button>
         </form>
         </div>
         </div>

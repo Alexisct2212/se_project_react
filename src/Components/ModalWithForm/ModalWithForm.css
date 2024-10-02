@@ -4,11 +4,13 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #0000004d;
+    background-color: rgba(0, 0, 0, 0.30);
     display: flex;
     justify-content: center;
     align-items: center;
     visibility: hidden;
+    font-weight: 700;
+    font-family: "CabinetGrotesk";
 }
 .modal__opened {
     visibility: visible;
@@ -23,6 +25,7 @@
     width: 20px;
     border: none;
     background-repeat: no-repeat;
+    cursor: pointer;
 }
 .modal__title{
 margin: 0;
@@ -70,7 +73,6 @@ width: 95px;
 margin-right: 5px;
 }
 .modal__submit{
-
     position: absolute;
     left: 28px;
     bottom: 36px;
@@ -79,8 +81,13 @@ margin-right: 5px;
     color: #fff;
     border: none;
     background-color: #000;
-    opacity: 0.3;
     border-radius: 4px;
+}
+.modal__submit:hover{
+    opacity: 60%;
+}
+.modal__submit:disabled{
+    opacity: 30%;
 }
 .modal__label_type_radio {
     display: block;
