@@ -1,6 +1,6 @@
 import "./Main.css"
 import WeatherCard from "../WeatherCard/WeatherCard";
-import { defaultClothingItems } from "../../Utils/Constants";
+import { defaultClothingItems } from "../../utils/Constants";
 import ItemCard from "../itemcard/ItemCard";
 function Main({weatherData,handleCardClick}){
     return(

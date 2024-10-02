@@ -1,12 +1,12 @@
 import {useEffect, useState} from "react"
 import './App.css';
 import Header from '../Header/Header';
-import { coordinates,APIKey } from "../../Utils/Constants";
+import { coordinates,APIKey } from "../../utils/Constants";
 import Main from '../Main/Main';
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import Footer from "../Footer/Footer";
 import ItemModal from "../itemModal/ItemModal";
-import { getWeather, filterWeatherData } from "../../Utils/WeatherApi";
+import { getWeather, filterWeatherData } from "../../utils/WeatherApi";
 function App(){
     const [weatherData, setWeatherData] = useState({type:"", temp:{F:999, C:999}, city:""})
     const [activeModal,setActiveModal] =useState("")
