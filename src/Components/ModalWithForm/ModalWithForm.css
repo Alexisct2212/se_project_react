@@ -92,6 +92,10 @@ margin-right: 5px;
 .modal__label_type_radio {
     display: block;
     margin: 0px 0px 8px 0px;
+    color: rgba(0, 0, 0, 0.50);
+  }
+  .modal__label_type_radio:active{
+    color: #000;
   }
   .modal__legend {
     padding:24px 0 12px 0;
