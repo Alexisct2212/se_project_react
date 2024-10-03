@@ -22,7 +22,7 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   };
-  const CloseActiveModal = () => {
+  const closeActiveModal = () => {
     setActiveModal("");
   };
   useEffect(() => {
@@ -44,7 +44,7 @@ function App() {
         title="New garment"
         buttonText="Add garment"
         activeModal={activeModal}
-        onClose={CloseActiveModal}
+        onClose={closeActiveModal}
         isOpen={activeModal === "add-garment"}
       >
         <label htmlFor="name" className="modal__label">
@@ -99,7 +99,7 @@ function App() {
       <ItemModal
         activeModal={activeModal}
         card={selectedCard}
-        onClose={CloseActiveModal}
+        onClose={closeActiveModal}
       />
       <Footer />
     </div>
