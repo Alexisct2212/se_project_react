@@ -1,0 +1,76 @@
+@keyframes slideToC {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(28px);
+    }
+  }
+  
+  @keyframes slideToF {
+    0% {
+      transform: translateX(28px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+.switch {
+    display: flex;
+    position: relative;
+    margin-left: auto;
+    align-items: center;
+  }
+  .switch__box{
+    border-radius: 25px;
+    border: 2px solid #7e7e7e;
+    width: 56px;
+    height: 30px;
+    appearance: none;
+    overflow: hidden;
+
+  }
+  .switch__slider{
+    border-radius: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+}
+  .switch__slider-F{
+    top: 0px;
+    left: 24px;
+    
+  }
+  .switch__slider-C{
+    top: 0px;
+    left: 0px;
+    
+  }
+  .switch__temp_F {
+    position: absolute;
+    top: -15px;
+    left: 35px;
+    color: white;
+  }
+  
+  .switch__temp_C {
+    left: 7px;
+    top: -15px;
+    position: absolute;
+    color: white;
+  }
+  .switch__temp_C,.switch__temp_F.false{
+    color:rgba(0, 0, 0, 0.333)
+  }
+  
+  .switch__active {
+    color: white;
+    opacity: 1;
+    cursor: pointer;
+  }
+  
+  

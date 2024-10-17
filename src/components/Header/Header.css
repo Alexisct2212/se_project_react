@@ -15,6 +15,7 @@
   }
   .header__add_clothes{
     opacity: 1;
+  
   }
   .header__add_clothes:hover{
     opacity: 0.2;
@@ -25,7 +26,7 @@
   }
   
   .header__add_clothes {
-    margin-left: auto;
+    margin-left: 20px;
     border: none;
     padding-right: 20px;
     background: none;
