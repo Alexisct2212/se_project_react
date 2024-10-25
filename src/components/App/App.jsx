@@ -10,6 +10,7 @@ import ItemModal from "../itemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/WeatherApi";
 import {CurrentTemperatureUnitContext} from '../context/CurrentTemperatureUnitContext';
 import AddItemModal from "../AddItemModal/AddItemModal";
+import Profile from "../profile/Profile";
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: "",
@@ -32,7 +33,7 @@ function App() {
   const handleAddItemSubmit = (newItem) => {
     addItem(newItem)
       .then((addedItem) => {
-        setClothingItems([addedItem, ...clothingItems]);
+        setClothingItems([addedItem, ...defaultClothingItems]);
         closeActiveModal();
       })
       .catch((error) => console.error("Error adding item:", error));
@@ -70,7 +71,7 @@ function App() {
             <Route
               path="/profile"
               element={
-                <h2>profile</h2>
+                <Profile onCardClick={handleCardClick}/>
               }
             />
           </Routes>
