@@ -101,6 +101,18 @@
       "name": "T-Shirt",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
+    },
+    {
+      "name": "gloves",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZRiGJXZoFNamZKeJiqhoAI0fpuRmJQxGBhw&s",
+      "weather": "cold",
+      "_id": 17
+    },
+    {
+      "name": "sandals",
+      "imageUrl": "https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/20b4438e45283fba0b8370330d9e3314.jpg?imageView2/2/w/264/q/70/format/webp",
+      "weather": "hot",
+      "_id": 19
     }
   ]
 }

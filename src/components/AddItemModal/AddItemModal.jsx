@@ -4,6 +4,7 @@ function AddItemModal({closeActiveModal,isOpen,handleAddItemSubmit}){
     const [name, setName] = useState("");
     const handleNameChange = (e) => {
       setName(e.target.value);
+      
     };
   
     const [imageUrl, setUrl] = useState("");
@@ -19,7 +20,10 @@ function AddItemModal({closeActiveModal,isOpen,handleAddItemSubmit}){
         e.preventDefault();
         console.log({name,imageUrl,weather});
         handleAddItemSubmit({ name, imageUrl, weather });
+        setName('');
+        setUrl('')
     }
+
     return(
 <ModalWithForm
         title="New garment"
