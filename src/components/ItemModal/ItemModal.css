@@ -29,3 +29,17 @@
     object-fit: cover;
     border-radius:16px 16px 0 0  ;
   }
+  .modal__delete{
+    height: 24px;
+    background-color:transparent;
+    color: #FF4D00;
+    border: none;
+    font-family: "Cabinet grotesk";
+    font-size: 20px;
+    position: absolute;
+    cursor: pointer;
+    right:32px;
+    bottom: 65px;
+    padding: 0;
+    
+  }
