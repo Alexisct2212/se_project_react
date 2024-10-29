@@ -112,7 +112,13 @@
       "name": "sandals",
       "imageUrl": "https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/20b4438e45283fba0b8370330d9e3314.jpg?imageView2/2/w/264/q/70/format/webp",
       "weather": "hot",
-      "_id": 19
+      "_id": 20
+    },
+    {
+      "name": "mask",
+      "imageUrl": "https://cdn11.bigcommerce.com/s-2o3gsghf8c/images/stencil/1920w/products/1118/3226/headwear_6750__34384.1662510767.jpg?c=1",
+      "weather": "cold",
+      "_id": 21
     }
   ]
 }
