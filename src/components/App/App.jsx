@@ -38,11 +38,11 @@ function App() {
   };
   
   // add item function
-  const handleAddItemSubmit = (newItem) => {
+  const handleAddItemSubmit = (newItem,resetForm) => {
     addItem(newItem)
       .then((addedItem) => {
         setClothingItems([addedItem, ...clothingItems]);
-
+        resetForm();
         closeActiveModal();
       })
       .catch((error) => console.error("Error adding item:", error));

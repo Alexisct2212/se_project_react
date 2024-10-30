@@ -15,14 +15,15 @@ function AddItemModal({ closeActiveModal, isOpen, handleAddItemSubmit }) {
   const handleWeatherChange = (e) => {
     setWeather(e.target.value);
   };
+  const resetForm=()=>{
+    setName("");
+    setUrl("");
+    setWeather("");
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log({ name, imageUrl, weather });
-    handleAddItemSubmit({ name, imageUrl, weather });
-    setName("");
-    setUrl("")
-    setWeather({weather:''})
-    closeActiveModal();
+    handleAddItemSubmit({ name, imageUrl, weather },resetForm);
   };
   const handleClose =(e)=>{
     e.preventDefault;
