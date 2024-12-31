@@ -11,9 +11,13 @@ import { getWeather, filterWeatherData } from "../../utils/WeatherApi";
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../profile/Profile";
-import { getItems, addItem, deleteItem } from "../../utils/Api";
+import { getItems, addItem, deleteItem,login,registerUser } from "../../utils/Api";
 import DeleteConfirm from "../DeleteConfirm/DeleteConfirm";
 import {items} from "../../../db.json"
+import LoginModal from "../LoginModal/LoginModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
+import CurrentUserContext from "../../context/CurrentUserContext";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: "",
@@ -24,6 +28,8 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   //open & close functions
   const handleAddClick = () => {
     setActiveModal("add-garment");
@@ -36,7 +42,7 @@ function App() {
     setActiveModal("");
     setSelectedCard({});
   };
-  
+
   // add item function
   const handleAddItemSubmit = (newItem,resetForm) => {
     addItem(newItem)
@@ -58,10 +64,34 @@ function App() {
         setClothingItems((cards) => cards.filter((c) => c._id !== card._id));
         closeActiveModal();
       })
-      .catch((error) => console.error("Error adding item:", error));
+      .catch((error) => console.error("Error Deleting item:", error));
   };
 
-  // toggle function for temperature
+  //login Function 
+  const handleLogin = ({ email, password }) => {
+    logIn({ email, password })
+      .then((res) => {
+        if (!res.token) throw new Error("Token not received");
+        localStorage.setItem("jwt", res.token);
+        return getUserProfile(res.token);
+      })
+      .then((user) => {
+        setCurrentUser(user);
+        setIsLoggedIn(true);
+        navigate("/profile");
+        closeModal();
+      })
+      .catch((err) => console.error("Login error:", err));
+  };
+  //register new users 
+  const handleRegister = (user) => {
+    register(userData)
+      .then(() =>
+        handleLogin({ email: user.email, password: user.password })
+      )
+      .catch(console.error);
+  };
+  // toggle function for temperature 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
@@ -81,6 +111,7 @@ function App() {
 
   return (
     <div className="page">
+      <CurrentUserContext.Provider value={currentUser}>
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
@@ -104,11 +135,13 @@ function App() {
             <Route
               path="/profile"
               element={
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
                 <Profile
                   onCardClick={handleCardClick}
                   handleAddClick={handleAddClick}
                   items={items}
                 />
+            </ProtectedRoute>
               }
             />
           </Routes>
@@ -131,7 +164,20 @@ function App() {
           handleDeleteCard={handleDeleteCard}
           selectedCard={selectedCard}
         />
+        <LoginModal
+        activeModal={activeModal === "login"}
+        onClose={closeActiveModal}
+        handlelogInModal={() => openModal("login")}
+        onLogIn={handleLogin}
+        />
+        <RegisterModal 
+        activeModal={activeModal ==="signup"}
+        onClose={closeActiveModal}
+        handleRegisterModal={() => openModal("signup")}
+        onRegister={handleRegister}
+        />
       </CurrentTemperatureUnitContext.Provider>
+      </CurrentUserContext.Provider>
     </div>
   );
 }
