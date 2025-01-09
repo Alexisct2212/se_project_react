@@ -47,6 +47,7 @@ const LoginModal = ({
       error={error}
       name="login"
     >
+        
       <button
         className="modal__close"
         type="button"
@@ -89,7 +90,7 @@ const LoginModal = ({
         <button
           type="submit"
           className={`${buttonClass} ${
-            isButtonActive ? "modal__submit_complete" : ""
+            isButtonActive ? "modal__submit_complete" : "modal"
           }`}
         >
           Log In
@@ -103,6 +104,7 @@ const LoginModal = ({
         </button>
       </div>
     </ModalWithForm>
+   
   );
 };
 

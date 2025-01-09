@@ -46,3 +46,16 @@
     text-decoration: none;
     color: black;
   }
+  .header__login{
+    background-color: none;
+    border: none;
+    height: 25px;
+    margin:0px 0px 0px 20px ;
+    padding: none;
+  }
+  .header__signup{
+    background-color: none;
+    border:none;
+    margin:0px 0px 0px 36px ;
+    padding: none;
+  }

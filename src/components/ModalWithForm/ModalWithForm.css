@@ -46,7 +46,7 @@
   box-sizing: border-box;
   width: 100%;
   width: 496px;
-  height: 436px;
+  height: auto;
   border-radius: 20px;
   border: 1px solid #000000 30%;
 }
@@ -73,9 +73,6 @@
   margin-right: 5px;
 }
 .modal__submit {
-  position: absolute;
-  left: 28px;
-  bottom: 36px;
   width: 124px;
   height: 36px;
   color: #fff;

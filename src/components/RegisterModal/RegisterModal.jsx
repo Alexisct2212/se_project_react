@@ -6,7 +6,7 @@ const RegisterModal = ({
   closeActiveModal,
   openLoginModal,
   isOpen,
-  handleLoginModal,
+  onRegister,
   buttonClass = "modal__submit",
 }) => {
   const [name, setName] = useState("");
@@ -108,11 +108,9 @@ const RegisterModal = ({
         />
       </label>
       <div className="modal__buttons-container">
-        <button
+      <button
           type="submit"
-          className={`${buttonClass} ${
-            isButtonActive ? "modal__submit_filled" : ""
-          }`}
+          className="modal__submit modal__signup-button-modal"
         >
           Sign Up
         </button>
