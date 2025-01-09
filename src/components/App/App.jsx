@@ -42,6 +42,12 @@ function App() {
     setActiveModal("");
     setSelectedCard({});
   };
+  const handleLoginModal = ()=>{
+    setActiveModal("login");
+  }
+  const handleRegisterModal=()=>{
+    setActiveModal("signup")
+  }
 
   // add item function
   const handleAddItemSubmit = (newItem,resetForm) => {
@@ -119,7 +125,10 @@ function App() {
           <Header
             handleAddClick={handleAddClick}
             weatherData={weatherData}
+            handleLoginModal={handleLoginModal}
+            handleRegisterModal={handleRegisterModal}
             clothingItems={clothingItems}
+            isLoggedIn={isLoggedIn}
           />
           <Routes>
             <Route
@@ -129,6 +138,7 @@ function App() {
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
                   items={items}
+                  isLoggedIn={isLoggedIn}
                  />
               }
             />
@@ -165,15 +175,16 @@ function App() {
           selectedCard={selectedCard}
         />
         <LoginModal
-        activeModal={activeModal === "login"}
-        onClose={closeActiveModal}
-        handlelogInModal={() => openModal("login")}
+        activeModal={activeModal}
+        closeActiveModal={closeActiveModal}
+        isOpen={activeModal==="login"}
         onLogIn={handleLogin}
         />
         <RegisterModal 
-        activeModal={activeModal ==="signup"}
-        onClose={closeActiveModal}
-        handleRegisterModal={() => openModal("signup")}
+        activeModal={activeModal}
+
+       closeActiveModal={closeActiveModal}
+        isOpen={activeModal==="signup"}
         onRegister={handleRegister}
         />
       </CurrentTemperatureUnitContext.Provider>

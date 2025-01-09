@@ -3,8 +3,9 @@ import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
+import RegisterModal from "../RegisterModal/RegisterModal";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({ handleAddClick, weatherData,activeModal,isLoggedIn,handleRegisterModal,handleLoginModal }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -17,6 +18,7 @@ function Header({ handleAddClick, weatherData }) {
       <p className="header__date_time">{currentDate}, {weatherData.city}
       </p>
       <ToggleSwitch/>
+      {isLoggedIn ?(<>
       <button
         onClick={handleAddClick}
         type="button"
@@ -33,7 +35,27 @@ function Header({ handleAddClick, weatherData }) {
           className="header__user_avatar"
           /> 
       </div>
-      </Link>
+      </Link> 
+      </>):(
+          <div className={` ${
+            activeModal === "login" && "modal_opened"
+          }`}>
+            <button
+              onClick={handleRegisterModal}
+              className="header__signup"
+              type="button"
+            >
+              Sign Up
+            </button>
+            <button
+              onClick={handleLoginModal}
+              className="header__login"
+              type="button"
+            >
+              Log In
+            </button>
+          </div>
+        )}
     </header>
   );
 }

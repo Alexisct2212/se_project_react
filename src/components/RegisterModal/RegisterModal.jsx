@@ -6,7 +6,7 @@ const RegisterModal = ({
   closeActiveModal,
   openLoginModal,
   isOpen,
-  onRegister,
+  handleLoginModal,
   buttonClass = "modal__submit",
 }) => {
   const [name, setName] = useState("");
@@ -42,10 +42,15 @@ const RegisterModal = ({
     <ModalWithForm
       title="Sign up"
       isOpen={isOpen}
-      closeActiveModal={closeActiveModal}
+      onClose={closeActiveModal}
       onSubmit={handleSubmit}
       name="register"
     >
+      <button
+        className="modal__close"
+        type="button"
+        onClick={closeActiveModal}
+      />
       <label htmlFor="register-email" className="modal__label">
         Email*
         <input
