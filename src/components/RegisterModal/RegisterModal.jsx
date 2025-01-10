@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 const RegisterModal = ({
   closeActiveModal,
   openLoginModal,
+  handleLoginModal,
   isOpen,
   onRegister,
   buttonClass = "modal__submit",
@@ -41,6 +42,7 @@ const RegisterModal = ({
   return (
     <ModalWithForm
       title="Sign up"
+      buttonText="Sign Up"
       isOpen={isOpen}
       onClose={closeActiveModal}
       onSubmit={handleSubmit}
@@ -108,16 +110,11 @@ const RegisterModal = ({
         />
       </label>
       <div className="modal__buttons-container">
-      <button
-          type="submit"
-          className="modal__submit modal__signup-button-modal"
-        >
-          Sign Up
-        </button>
+      
         <button
           type="button"
           className="modal__login-button"
-          onClick={openLoginModal}
+          onClick={handleLoginModal}
         >
           or Log In
         </button>

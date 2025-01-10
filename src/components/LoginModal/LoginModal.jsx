@@ -88,14 +88,6 @@ const LoginModal = ({
       {error && <div className="modal__error">{error}</div>}
       <div className="modal__buttons-wrapper">
         <button
-          type="submit"
-          className={`${buttonClass} ${
-            isButtonActive ? "modal__submit_complete" : "modal"
-          }`}
-        >
-          Log In
-        </button>
-        <button
           type="button"
           className="modal__signup-button"
           onClick={handleRegisterModal}

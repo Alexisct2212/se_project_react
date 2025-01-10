@@ -6,7 +6,7 @@ import { coordinates, APIKey } from "../../utils/Constants";
 import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import Footer from "../Footer/Footer";
-import ItemModal from "../itemModal/ItemModal";
+import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/WeatherApi";
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
@@ -177,13 +177,14 @@ function App() {
         <LoginModal
         activeModal={activeModal}
         closeActiveModal={closeActiveModal}
+        handleRegisterModal={() => handleRegisterModal("signup")}
         isOpen={activeModal==="login"}
         onLogIn={handleLogin}
         />
         <RegisterModal 
         activeModal={activeModal}
-
-       closeActiveModal={closeActiveModal}
+        handleLoginModal={() => handleLoginModal("login")}
+        closeActiveModal={closeActiveModal}
         isOpen={activeModal==="signup"}
         onRegister={handleRegister}
         />

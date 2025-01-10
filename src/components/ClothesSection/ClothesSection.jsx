@@ -1,8 +1,12 @@
 import "./ClothesSection.css"
 import { defaultClothingItems } from "../../utils/Constants"
 import ItemCard from "../itemcard/ItemCard"
+import { useContext } from "react";
+import CurrentUserContext from "../../context/CurrentUserContext"
 function ClothesSection ({ onCardClick,handleAddClick,items}){
-    const reverseItems = [...items].reverse();
+  const currentUser = useContext(CurrentUserContext);
+  const useritems = items.filter((item)=>item.owner === currentUser?._id)
+    const reverseItems = [...useritems].reverse();
     return(
         <div className="clothes__section">
             <div className="clothes__section-header">
