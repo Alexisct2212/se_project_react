@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 
 const RegisterModal = ({
   closeActiveModal,
-  openLoginModal,
   handleLoginModal,
   isOpen,
   onRegister,

@@ -14,3 +14,25 @@ margin-right: auto;
     font-size: 20px;
     font-family: "Cabinet Grotesk";
 }
+.sidebar__buttons-options{
+    display: inline-grid;
+    position: absolute;
+    top: 174px;
+}
+.sidebar__edit_profile{
+    border: none;
+    background-color: transparent;
+    font-family: "Cabinet Grotesk";
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24.8px;
+}
+.sidebar__logout{
+    border:none;
+    margin-right: auto;
+    margin-top: 8px;
+    font-family: "Cabinet Grotesk";
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24.8px;
+}

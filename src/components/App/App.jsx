@@ -11,13 +11,15 @@ import { getWeather, filterWeatherData } from "../../utils/WeatherApi";
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../profile/Profile";
-import { getItems, addItem, deleteItem,login,registerUser } from "../../utils/Api";
+import { getItems, addItem, deleteItem } from "../../utils/Api";
 import DeleteConfirm from "../DeleteConfirm/DeleteConfirm";
 import {items} from "../../../db.json"
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import CurrentUserContext from "../../context/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import EditProfileModal from "../EditModal/EditModal";
+import {registerUser,logIn,getUserProfile,editUserProfile,addCardLike,removeCardLike} from "../../utils/auth"
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: "",
@@ -47,6 +49,12 @@ function App() {
   }
   const handleRegisterModal=()=>{
     setActiveModal("signup")
+  }
+  const handleEditModal=()=>{
+    setActiveModal("editprofile")
+  }
+  const handleLogoutModal=()=>{
+    setActiveModal("logout")
   }
 
   // add item function
@@ -91,7 +99,7 @@ function App() {
   };
   //register new users 
   const handleRegister = (user) => {
-    register(userData)
+    registerUser(user)
       .then(() =>
         handleLogin({ email: user.email, password: user.password })
       )
@@ -150,8 +158,9 @@ function App() {
                   onCardClick={handleCardClick}
                   handleAddClick={handleAddClick}
                   items={items}
+                  handleEditModal={handleEditModal}
                 />
-            </ProtectedRoute>
+                </ProtectedRoute>
               }
             />
           </Routes>
@@ -187,6 +196,12 @@ function App() {
         closeActiveModal={closeActiveModal}
         isOpen={activeModal==="signup"}
         onRegister={handleRegister}
+        />
+        <EditProfileModal
+        activeModal={activeModal}
+        closeActiveModal={closeActiveModal}
+        isOpen={activeModal==="editprofile"}
+        handleEditModal={()=>handleEditModal("editprofile")}
         />
       </CurrentTemperatureUnitContext.Provider>
       </CurrentUserContext.Provider>

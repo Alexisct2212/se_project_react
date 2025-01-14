@@ -41,9 +41,6 @@ const LoginModal = ({
       isOpen={isOpen}
       onClose={closeActiveModal}
       onSubmit={handleSubmit}
-      buttonClass={`modal__submit ${
-        isButtonActive ? "modal__submit_complete" : ""
-      }`}
       error={error}
       name="login"
     >

@@ -69,4 +69,4 @@ function checkResponseOfToken (token){
     },
   }).then(checkResponse)
 }
-export { getItems, addItem, deleteItem,login,registerUser };
+export { getItems, addItem, deleteItem};
