@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header";
 import { coordinates, APIKey } from "../../utils/Constants";
@@ -20,6 +20,7 @@ import CurrentUserContext from "../../context/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import EditProfileModal from "../EditModal/EditModal";
 import {registerUser,logIn,getUserProfile,editUserProfile,addCardLike,removeCardLike} from "../../utils/auth"
+
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: "",
@@ -32,6 +33,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate()
   //open & close functions
   const handleAddClick = () => {
     setActiveModal("add-garment");
@@ -53,14 +55,39 @@ function App() {
   const handleEditModal=()=>{
     setActiveModal("editprofile")
   }
-  const handleLogoutModal=()=>{
-    setActiveModal("logout")
-  }
+  
+  //like function
+  const handleCardLike = ({ id, isLiked }) => {
+    const token = localStorage.getItem("jwt");
+    // Check if this card is not currently liked
+    !isLiked
+      ? // if so, send a request to add the user's id to the card's likes array
+        api
+          // the first argument is the card's id
+          .addCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err))
+      : // if not, send a request to remove the user's id from the card's likes array
+        api
+          // the first argument is the card's id
+          .removeCardLike(id, token) 
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err));
+  };
 
   // add item function
   const handleAddItemSubmit = (newItem,resetForm) => {
-    addItem(newItem)
-      .then((addedItem) => {
+    const token = localStorage.getItem("jwt")
+    addItem(newItem,token)
+      .then((addedItem,) => {
         setClothingItems([addedItem, ...clothingItems]);
         resetForm();
         closeActiveModal();
@@ -93,7 +120,7 @@ function App() {
         setCurrentUser(user);
         setIsLoggedIn(true);
         navigate("/profile");
-        closeModal();
+        console.log(user)
       })
       .catch((err) => console.error("Login error:", err));
   };
@@ -105,12 +132,19 @@ function App() {
       )
       .catch(console.error);
   };
+  // handleSignout
+  const handleSignout = () => {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+    setCurrentUser(null);
+    navigate("/");
+  };
   // toggle function for temperature 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
-  //
+  //use effects
   useEffect(() => {
     getWeather(coordinates, APIKey)
       .then((data) => {
@@ -121,6 +155,21 @@ function App() {
     getItems()
       .then((items) => setClothingItems(items))
       .catch((error) => console.error("Error fetching items:", error));
+  }, []);
+  //
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      getUserProfile(token)
+        .then((user) => {
+          setCurrentUser(user);
+          setIsLoggedIn(true);
+        })
+        .catch((err) => {
+          console.error("Error verifying token:", err);
+          setIsLoggedIn(false);
+        });
+    }
   }, []);
 
   return (
@@ -153,14 +202,15 @@ function App() {
             <Route
               path="/profile"
               element={
-                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                isLoggedIn?(
                 <Profile
                   onCardClick={handleCardClick}
                   handleAddClick={handleAddClick}
                   items={items}
                   handleEditModal={handleEditModal}
+                  handleSignout={handleSignout}
                 />
-                </ProtectedRoute>
+                ):(<navigate to="/" replace/>)
               }
             />
           </Routes>

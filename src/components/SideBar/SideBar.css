@@ -18,6 +18,7 @@ margin-right: auto;
     display: inline-grid;
     position: absolute;
     top: 174px;
+    margin-top: 25px;
 }
 .sidebar__edit_profile{
     border: none;

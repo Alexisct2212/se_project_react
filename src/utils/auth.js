@@ -17,7 +17,7 @@ function logIn({ email, password}) {
   };
   
   function registerUser({ email, password, name, avatar }) {
-    return fetch(`${baseUrl}/items/signup`, {
+    return fetch(`${baseUrl}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

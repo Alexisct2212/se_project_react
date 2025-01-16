@@ -46,6 +46,7 @@ const RegisterModal = ({
       onClose={closeActiveModal}
       onSubmit={handleSubmit}
       name="register"
+      isButtonDisabled={!isButtonActive}
     >
       <button
         className="modal__close"

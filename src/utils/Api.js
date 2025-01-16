@@ -19,14 +19,14 @@ function getItems() {
   }).then(checkResponse);
 }
 
-function addItem({ name, imageUrl, weather }) {
+function addItem({name,weather,imageUrl},token) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-  
+      Authorization:`Bearer ${token}`
     },
-    body: JSON.stringify({ name, imageUrl, weather }),
+    body: JSON.stringify({name,weather,imageUrl}),
   }).then(checkResponse);
 }
 
@@ -51,7 +51,7 @@ function login({ email, password}) {
 };
 
 function registerUser({ email, password, name, avatar }) {
-  return fetch(`${baseUrl}/items/signup`, {
+  return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -60,7 +60,7 @@ function registerUser({ email, password, name, avatar }) {
     
   }).then(checkResponse);
 }
-function checkResponseOfToken (token){
+ const checkTokenValidity = (token)=>{
   return fetch(`${baseUrl}/users/me`,{
     method:"GET",
     headers:{
