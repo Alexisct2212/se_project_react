@@ -3,7 +3,7 @@ import { defaultClothingItems } from "../../utils/Constants"
 import ItemCard from "../itemcard/ItemCard"
 import { useContext } from "react";
 import CurrentUserContext from "../../context/CurrentUserContext"
-function ClothesSection ({ onCardClick,handleAddClick,items}){
+function ClothesSection ({ onCardClick,handleAddClick,items,clothingItems}){
   const currentUser = useContext(CurrentUserContext);
   const useritems = items.filter((item)=>item.owner === currentUser?._id)
     const reverseItems = [...useritems].reverse();

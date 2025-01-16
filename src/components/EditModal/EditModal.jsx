@@ -7,7 +7,6 @@ const EditProfileModal = ({
   closeActiveModal,
   isOpen,
   onEditProfileSubmit,
-  handleClose
 }) => {
   const currentUser = useContext(CurrentUserContext);
   const [name, setName] = useState("");

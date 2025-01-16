@@ -88,7 +88,7 @@ function App() {
     const token = localStorage.getItem("jwt")
     addItem(newItem,token)
       .then((addedItem,) => {
-        setClothingItems([addedItem, ...clothingItems]);
+        setClothingItems([addedItem.data, ...clothingItems]);
         resetForm();
         closeActiveModal();
       })
@@ -184,7 +184,6 @@ function App() {
             weatherData={weatherData}
             handleLoginModal={handleLoginModal}
             handleRegisterModal={handleRegisterModal}
-            clothingItems={clothingItems}
             isLoggedIn={isLoggedIn}
           />
           <Routes>
@@ -194,7 +193,7 @@ function App() {
                 <Main
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
-                  items={items}
+                  items={clothingItems}
                   isLoggedIn={isLoggedIn}
                  />
               }
@@ -206,7 +205,7 @@ function App() {
                 <Profile
                   onCardClick={handleCardClick}
                   handleAddClick={handleAddClick}
-                  items={items}
+                  items={clothingItems}
                   handleEditModal={handleEditModal}
                   handleSignout={handleSignout}
                 />
