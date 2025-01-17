@@ -32,6 +32,7 @@ const LoginModal = ({
       email: data.email,
       password: data.password,
     });
+    closeActiveModal();
   };
 
   return (

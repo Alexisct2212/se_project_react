@@ -36,6 +36,7 @@ const RegisterModal = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     onRegister({ name, avatar, email, password });
+    closeActiveModal();
   };
 
   return (

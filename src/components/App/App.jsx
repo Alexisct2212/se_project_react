@@ -64,10 +64,19 @@ function App() {
     cardAction(id, token)
       .then((updatedCard) => {
         setClothingItems((cards) =>
-          cards.map((item) => (item.id === id ? updatedCard : item))
+          cards.map((item) => (item._id === id ? updatedCard.data : item))
         );
       })
       .catch(console.error);
+  };
+  //EditFunction 
+  const handleEditProfile = ({name,avatar}) => {
+    const token = localStorage.getItem("jwt");
+    editUserProfile({name,avatar}, token)
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+      })
+      .catch((err) => console.error("Edit profile error:", err));
   };
 
   // add item function
@@ -87,7 +96,8 @@ function App() {
     setActiveModal("delete-confirmation");
   };
   const handleDeleteCard = (card) => {
-    deleteItem(card)
+    const token = localStorage.getItem("jwt");
+    deleteItem(card,token)
       .then(() => {
         setClothingItems((cards) => cards.filter((c) => c._id !== card._id));
         closeActiveModal();
@@ -240,6 +250,7 @@ function App() {
         closeActiveModal={closeActiveModal}
         isOpen={activeModal==="editprofile"}
         handleEditModal={()=>handleEditModal("editprofile")}
+        handleEditProfile={handleEditProfile}
         />
       </CurrentTemperatureUnitContext.Provider>
       </CurrentUserContext.Provider>

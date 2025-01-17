@@ -6,7 +6,7 @@ import "../ModalWithForm/ModalWithForm.css";
 const EditProfileModal = ({
   closeActiveModal,
   isOpen,
-  onEditProfileSubmit,
+  handleEditProfile,
 }) => {
   const currentUser = useContext(CurrentUserContext);
   const [name, setName] = useState("");
@@ -41,8 +41,9 @@ const EditProfileModal = ({
   function handleSubmit(e) {
     e.preventDefault();
     if (validateForm()) {
-      onEditProfileSubmit({ name, avatar });
+      handleEditProfile({ name, avatar });
     }
+    closeActiveModal();
   }
 
 
@@ -72,7 +73,7 @@ const EditProfileModal = ({
         isButtonActive ? "modal__submit_active" : ""
       }`}
       isOpen={isOpen}
-      closeActiveModal={closeActiveModal}
+      onClose={closeActiveModal}
       onSubmit={handleSubmit}
       name={"editprofile"}
     >
@@ -87,8 +88,7 @@ const EditProfileModal = ({
           type="text"
           className="modal__input"
           id="name"
-          placeholder={name}
-          value={name}
+          placeholder="name"
           onChange={handleNameChange}
           required
         />
@@ -100,8 +100,7 @@ const EditProfileModal = ({
           type="url"
           className="modal__input"
           id="avatar"
-          placeholder={avatar}
-          value={avatar}
+          placeholder="Image Url"
           onChange={handleAvatarChange}
           required
         />

@@ -30,11 +30,12 @@ function addItem({name,weather,imageUrl},token) {
   }).then(checkResponse);
 }
 
-function deleteItem(item) {
+function deleteItem(item,token) {
   return fetch(`${baseUrl}/items/${item._id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      Authorization:`Bearer ${token}`
       
     },
   }).then(checkResponse);
