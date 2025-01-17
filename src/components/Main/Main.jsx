@@ -4,7 +4,7 @@ import { defaultClothingItems } from "../../utils/Constants";
 import ItemCard from "../itemcard/ItemCard";
 import { CurrentTemperatureUnitContext } from "../../context/CurrentTemperatureUnitContext";
 import { useContext } from "react";
-function Main({ weatherData, handleCardClick,items,clothingItems}) {
+function Main({ weatherData, handleCardClick,items,clothingItems,handleCardLike}) {
   const {currentTemperatureUnit}= useContext(CurrentTemperatureUnitContext);
   const displayTemp =
   currentTemperatureUnit === "F" ? weatherData.temp.F : weatherData.temp.C;
@@ -24,6 +24,7 @@ function Main({ weatherData, handleCardClick,items,clothingItems}) {
                 key={clothingItems._id}
                 item={clothingItems}
                 onCardClick={handleCardClick}
+                handleCardLike={handleCardLike}
               />
             ))}
         </ul>

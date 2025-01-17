@@ -24,7 +24,7 @@ height: 24px;
     border-radius: 12px;
     border: 1px solid rgba(0, 0, 0, 0.3) ;
 }
-.card__like_Button{
+.item__heart{
     width: 21px;
     height: 19px;
     background-color: transparent;
@@ -38,3 +38,14 @@ height: 24px;
     right: 60px;
     cursor: pointer;
 }
+.item__heart_liked {
+    background-image: url(../../assets/ActiveLikeButton.png);
+  }
+  
+  .item__heart_visible {
+    visibility: visible;
+  }
+  
+  .item__heart_hidden {
+    visibility: hidden;
+  }

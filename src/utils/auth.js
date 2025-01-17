@@ -1,5 +1,4 @@
 const baseUrl = "http://localhost:3001";
-
 export function checkResponse(res) {
   if (res.ok) {
     return res.json();
@@ -44,7 +43,7 @@ function logIn({ email, password}) {
       body: JSON.stringify({ name, avatar }),
     }).then(checkResponse);
   };
-  const addCardLike=(id,like)=>{
+  const addCardLike=(id,token)=>{
     return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
     headers: {
