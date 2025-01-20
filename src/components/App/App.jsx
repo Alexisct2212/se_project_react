@@ -70,11 +70,16 @@ function App() {
       .catch(console.error);
   };
   //EditFunction 
-  const handleEditProfile = ({name,avatar}) => {
+  const handleEditProfile = ({ name, avatar }) => {
     const token = localStorage.getItem("jwt");
-    editUserProfile({name,avatar}, token)
+    editUserProfile({ name, avatar }, token)
       .then((updatedUser) => {
-        setCurrentUser(updatedUser);
+        setCurrentUser((user) => {
+          return {
+            ...user, 
+            ...updatedUser,
+          };
+        });
       })
       .catch((err) => console.error("Edit profile error:", err));
   };

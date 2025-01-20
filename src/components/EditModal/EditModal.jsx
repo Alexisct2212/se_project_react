@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import CurrentUserContext from "../../context/CurrentUserContext"
+import CurrentUserContext from "../../context/CurrentUserContext";
 import "../ModalWithForm/ModalWithForm.css";
 
 const EditProfileModal = ({
@@ -10,7 +10,7 @@ const EditProfileModal = ({
 }) => {
   const currentUser = useContext(CurrentUserContext);
   const [name, setName] = useState("");
-  const [avatar, setavatar] = useState("");
+  const [avatar, setAvatar] = useState("");
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [errors, setErrors] = useState({ name: "", avatar: "" });
 
@@ -21,12 +21,12 @@ const EditProfileModal = ({
       avatar: "",
     };
 
-    if (!name) {
+    if (!name.trim()) {
       errors.name = "Name is required.";
       isValid = false;
     }
 
-    if (!avatar) {
+    if (!avatar.trim()) {
       errors.avatar = "Image URL is required.";
       isValid = false;
     } else if (!/^https?:\/\/.+/.test(avatar)) {
@@ -38,18 +38,18 @@ const EditProfileModal = ({
     return isValid;
   };
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
       handleEditProfile({ name, avatar });
+      closeActiveModal();
     }
-    closeActiveModal();
-  }
-
+  };
 
   const handleNameChange = (e) => setName(e.target.value || "");
-  const handleAvatarChange = (e) => setavatar(e.target.value || "");
+  const handleAvatarChange = (e) => setAvatar(e.target.value || "");
 
+  // Update button state based on input values
   useEffect(() => {
     if (name.trim() && avatar.trim()) {
       setIsButtonActive(true);
@@ -58,12 +58,14 @@ const EditProfileModal = ({
     }
   }, [name, avatar]);
 
+  // Populate the form with current user data when the modal is open
   useEffect(() => {
-    if (currentUser) {
-      setName(currentUser.name || "");
-      setavatar(currentUser.avatar || "");
+    if (isOpen && currentUser) {
+      setName("");
+      setAvatar("");
+      setErrors({ name: "", avatar: "" }); // Reset errors
     }
-  }, [currentUser]);
+  }, [isOpen, currentUser]);
 
   return (
     <ModalWithForm
@@ -77,30 +79,32 @@ const EditProfileModal = ({
       onSubmit={handleSubmit}
       name={"editprofile"}
     >
-        <button
+      <button
         className="modal__close"
         type="button"
         onClick={closeActiveModal}
       />
       <label htmlFor="name" className="modal__label">
-        Name *{" "}
+        Name *
         <input
           type="text"
           className="modal__input"
           id="name"
-          placeholder="name"
+          placeholder="Name"
+          value={name} // Controlled input
           onChange={handleNameChange}
           required
         />
         {errors.name && <span className="modal__error">{errors.name}</span>}
       </label>
       <label htmlFor="avatar" className="modal__label">
-        Avatar *{" "}
+        Avatar *
         <input
           type="url"
           className="modal__input"
           id="avatar"
-          placeholder="Image Url"
+          placeholder="Image URL"
+          value={avatar} // Controlled input
           onChange={handleAvatarChange}
           required
         />
