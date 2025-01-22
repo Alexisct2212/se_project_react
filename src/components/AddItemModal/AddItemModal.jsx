@@ -15,20 +15,20 @@ function AddItemModal({ closeActiveModal, isOpen, handleAddItemSubmit }) {
   const handleWeatherChange = (e) => {
     setWeather(e.target.value);
   };
-  const resetForm=()=>{
+  const resetForm = () => {
     setName("");
     setUrl("");
     setWeather("");
-  }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log({ name, imageUrl, weather });
-    handleAddItemSubmit({ name, imageUrl, weather },resetForm);
+    handleAddItemSubmit({ name, imageUrl, weather }, resetForm);
   };
-  const handleClose =(e)=>{
+  const handleClose = (e) => {
     resetForm();
     closeActiveModal();
-  }
+  };
 
   return (
     <ModalWithForm
@@ -39,9 +39,7 @@ function AddItemModal({ closeActiveModal, isOpen, handleAddItemSubmit }) {
       onSubmit={handleSubmit}
       handleClose={handleClose}
     >
-      <label  className="modal__label">
-        Name{""}
-      </label>
+      <label className="modal__label">Name{""}</label>
       <input
         type="text"
         className="modal__input"
@@ -52,9 +50,7 @@ function AddItemModal({ closeActiveModal, isOpen, handleAddItemSubmit }) {
         value={name}
         onChange={handleNameChange}
       />
-      <label  className="modal__label">
-        Image{""}
-      </label>
+      <label className="modal__label">Image{""}</label>
       <input
         type="Url"
         className="modal__input"
@@ -65,7 +61,7 @@ function AddItemModal({ closeActiveModal, isOpen, handleAddItemSubmit }) {
       />
       <fieldset className="modal__radio-buttons">
         <legend className="modal__legend">Select the weather type:</legend>
-        <label  className=" modal__label_type_radio">
+        <label className=" modal__label_type_radio">
           <input
             type="radio"
             className="modal__radio-input"
@@ -78,7 +74,7 @@ function AddItemModal({ closeActiveModal, isOpen, handleAddItemSubmit }) {
           />
           Hot
         </label>
-        <label  className=" modal__label_type_radio">
+        <label className=" modal__label_type_radio">
           <input
             type="radio"
             className="modal__radio-input"
@@ -91,7 +87,7 @@ function AddItemModal({ closeActiveModal, isOpen, handleAddItemSubmit }) {
           />
           Warm
         </label>
-        <label  className="modal__label_type_radio">
+        <label className="modal__label_type_radio">
           <input
             type="radio"
             className="modal__radio-input"
