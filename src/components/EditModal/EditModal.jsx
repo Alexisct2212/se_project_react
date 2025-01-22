@@ -38,15 +38,10 @@ const EditProfileModal = ({
     return isValid;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      try {
-        await handleEditProfile({ name, avatar });
-        closeActiveModal();
-      } catch (error) {
-        console.error("Failed to update profile:", error);
-      }
+      handleEditProfile({ name, avatar });
     }
   };
   

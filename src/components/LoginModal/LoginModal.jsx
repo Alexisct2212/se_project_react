@@ -23,14 +23,15 @@ const LoginModal = ({
     }
   }, [isOpen]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      await onLogIn({ email:data.email, password:data.password });
-      closeActiveModal();
-    } catch (error) {
-      console.error("Failed to log in:", error);
+    if (!data.email || !data.password) {
+      return;
     }
+    onLogIn({
+      email: data.email,
+      password: data.password,
+    });
   };
 
   return (

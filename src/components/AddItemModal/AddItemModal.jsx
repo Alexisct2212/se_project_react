@@ -39,7 +39,7 @@ function AddItemModal({ closeActiveModal, isOpen, handleAddItemSubmit }) {
       onSubmit={handleSubmit}
       handleClose={handleClose}
     >
-      <label className="modal__label">Name{""}</label>
+      <label className="modal__label">Name{""}
       <input
         type="text"
         className="modal__input"
@@ -49,8 +49,8 @@ function AddItemModal({ closeActiveModal, isOpen, handleAddItemSubmit }) {
         maxLength="30"
         value={name}
         onChange={handleNameChange}
-      />
-      <label className="modal__label">Image{""}</label>
+      /></label>
+      <label className="modal__label">Image{""}
       <input
         type="Url"
         className="modal__input"
@@ -58,7 +58,7 @@ function AddItemModal({ closeActiveModal, isOpen, handleAddItemSubmit }) {
         placeholder="Image URL"
         onChange={handleUrlChange}
         value={imageUrl}
-      />
+      /></label>
       <fieldset className="modal__radio-buttons">
         <legend className="modal__legend">Select the weather type:</legend>
         <label className=" modal__label_type_radio">

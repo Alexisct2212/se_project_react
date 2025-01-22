@@ -86,8 +86,10 @@ function App() {
           return {
             ...user,
             ...updatedUser,
-          };
+            
+          }
         });
+        closeActiveModal()
       })
       .catch((err) => console.error("Edit profile error:", err));
   };
@@ -131,6 +133,7 @@ function App() {
         setIsLoggedIn(true);
         navigate("/profile");
         console.log(user);
+        closeActiveModal()
       })
       .catch((err) => console.error("Login error:", err));
   };

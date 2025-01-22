@@ -33,14 +33,9 @@ const RegisterModal = ({
     }
   }, [isOpen]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      await onRegister({ name, avatar, email, password });
-      closeActiveModal();
-    } catch (error) {
-      console.error("Failed to register:", error);
-    }
+    onRegister({ name, avatar, email, password });
   };
 
   return (
