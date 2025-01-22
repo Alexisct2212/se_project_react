@@ -89,8 +89,8 @@ function App() {
   const handleAddItemSubmit = (newItem,resetForm) => {
     const token = localStorage.getItem("jwt")
     addItem(newItem,token)
-      .then((addedItem,) => {
-        setClothingItems([addedItem.data, ...clothingItems]);
+      .then((addItem) => {
+        setClothingItems([...clothingItems,addItem.data]);
         resetForm();
         closeActiveModal();
       })
@@ -174,7 +174,21 @@ function App() {
         });
     }
   }, []);
+//
+useEffect(() => {
+  if (!activeModal) return; // Exit if there is no active modal
 
+  const handleEscClose = (e) => {
+    if (e.key === "Escape") {
+      closeActiveModal();
+    }
+  };
+  document.addEventListener("keydown", handleEscClose);
+  return () => {
+    // Clean up event listeners
+    document.removeEventListener("keydown", handleEscClose);
+  };
+}, [activeModal, closeActiveModal]);
   return (
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
