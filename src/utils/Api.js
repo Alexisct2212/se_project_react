@@ -1,6 +1,6 @@
 const baseUrl = "http://localhost:3001";
 
-export function checkResponse(res) {
+function checkResponse(res) {
   if (res.ok) {
     return res.json();
   }
@@ -70,4 +70,4 @@ function registerUser({ email, password, name, avatar }) {
     },
   }).then(checkResponse)
 }
-export { getItems, addItem, deleteItem};
+export { getItems, addItem, deleteItem,checkResponse};

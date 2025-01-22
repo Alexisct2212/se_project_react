@@ -23,16 +23,14 @@ const LoginModal = ({
     }
   }, [isOpen]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!data.email || !data.password) {
-      return;
+    try {
+      await onLogIn({ email:data.email, password:data.password });
+      closeActiveModal();
+    } catch (error) {
+      console.error("Failed to log in:", error);
     }
-    onLogIn({
-      email: data.email,
-      password: data.password,
-    });
-    closeActiveModal();
   };
 
   return (
@@ -51,7 +49,7 @@ const LoginModal = ({
         type="button"
         onClick={closeActiveModal}
       />
-      <label htmlFor="login-email" className="modal__label">
+      <label  className="modal__label">
         Email*
         <input
           type="email"
@@ -67,7 +65,7 @@ const LoginModal = ({
           autoComplete="email"
         />
       </label>
-      <label htmlFor="login-password" className="modal__label">
+      <label  className="modal__label">
         Password*
         <input
           type="password"

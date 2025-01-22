@@ -22,7 +22,7 @@ function ItemCard({ item, onCardClick,handleCardLike }) {
   return (
     <li className="card">
       <h2 className="card__name">{item.name}</h2>
-      <button className={itemCardLikeClassName} type="button" onClick={handleLike}></button>
+     {currentUser?._id &&( <button className={itemCardLikeClassName} type="button" onClick={handleLike}/>)}
       <img
         onClick={handleCardClick}
         className="card__image"

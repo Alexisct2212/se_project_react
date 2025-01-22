@@ -26,10 +26,7 @@ function AddItemModal({ closeActiveModal, isOpen, handleAddItemSubmit }) {
     handleAddItemSubmit({ name, imageUrl, weather },resetForm);
   };
   const handleClose =(e)=>{
-    e.preventDefault;
-    setName("");
-    setUrl("");
-    setWeather({weather:''})
+    resetForm();
     closeActiveModal();
   }
 
@@ -42,7 +39,7 @@ function AddItemModal({ closeActiveModal, isOpen, handleAddItemSubmit }) {
       onSubmit={handleSubmit}
       handleClose={handleClose}
     >
-      <label htmlFor="name" className="modal__label">
+      <label  className="modal__label">
         Name{""}
       </label>
       <input
@@ -55,7 +52,7 @@ function AddItemModal({ closeActiveModal, isOpen, handleAddItemSubmit }) {
         value={name}
         onChange={handleNameChange}
       />
-      <label htmlFor="imageURL" className="modal__label">
+      <label  className="modal__label">
         Image{""}
       </label>
       <input
@@ -68,7 +65,7 @@ function AddItemModal({ closeActiveModal, isOpen, handleAddItemSubmit }) {
       />
       <fieldset className="modal__radio-buttons">
         <legend className="modal__legend">Select the weather type:</legend>
-        <label htmlFor="hot" className=" modal__label_type_radio">
+        <label  className=" modal__label_type_radio">
           <input
             type="radio"
             className="modal__radio-input"
@@ -81,7 +78,7 @@ function AddItemModal({ closeActiveModal, isOpen, handleAddItemSubmit }) {
           />
           Hot
         </label>
-        <label htmlFor="warm" className=" modal__label_type_radio">
+        <label  className=" modal__label_type_radio">
           <input
             type="radio"
             className="modal__radio-input"
@@ -94,7 +91,7 @@ function AddItemModal({ closeActiveModal, isOpen, handleAddItemSubmit }) {
           />
           Warm
         </label>
-        <label htmlFor="cold" className="modal__label_type_radio">
+        <label  className="modal__label_type_radio">
           <input
             type="radio"
             className="modal__radio-input"

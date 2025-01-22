@@ -33,10 +33,14 @@ const RegisterModal = ({
     }
   }, [isOpen]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onRegister({ name, avatar, email, password });
-    closeActiveModal();
+    try {
+      await onRegister({ name, avatar, email, password });
+      closeActiveModal();
+    } catch (error) {
+      console.error("Failed to register:", error);
+    }
   };
 
   return (
@@ -54,7 +58,7 @@ const RegisterModal = ({
         type="button"
         onClick={closeActiveModal}
       />
-      <label htmlFor="register-email" className="modal__label">
+      <label  className="modal__label">
         Email*
         <input
           type="email"
@@ -68,7 +72,7 @@ const RegisterModal = ({
           autoComplete="email"
         />
       </label>
-      <label htmlFor="register-password" className="modal__label">
+      <label  className="modal__label">
         Password*
         <input
           type="password"
@@ -82,7 +86,7 @@ const RegisterModal = ({
           autoComplete="new-password"
         />
       </label>
-      <label htmlFor="register-name" className="modal__label">
+      <label  className="modal__label">
         Name*
         <input
           type="text"
@@ -96,7 +100,7 @@ const RegisterModal = ({
           autoComplete="name"
         />
       </label>
-      <label htmlFor="register-avatar" className="modal__label">
+      <label  className="modal__label">
         Avatar URL*
         <input
           type="url"

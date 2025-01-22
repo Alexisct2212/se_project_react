@@ -38,13 +38,18 @@ const EditProfileModal = ({
     return isValid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      handleEditProfile({ name, avatar });
-      closeActiveModal();
+      try {
+        await handleEditProfile({ name, avatar });
+        closeActiveModal();
+      } catch (error) {
+        console.error("Failed to update profile:", error);
+      }
     }
   };
+  
 
   const handleNameChange = (e) => setName(e.target.value || "");
   const handleAvatarChange = (e) => setAvatar(e.target.value || "");
@@ -61,8 +66,8 @@ const EditProfileModal = ({
   // Populate the form with current user data when the modal is open
   useEffect(() => {
     if (isOpen && currentUser) {
-      setName("");
-      setAvatar("");
+      setName(""||currentUser.name);
+      setAvatar(""||currentUser.avatar);
       setErrors({ name: "", avatar: "" }); // Reset errors
     }
   }, [isOpen, currentUser]);
@@ -84,7 +89,7 @@ const EditProfileModal = ({
         type="button"
         onClick={closeActiveModal}
       />
-      <label htmlFor="name" className="modal__label">
+      <label  className="modal__label">
         Name *
         <input
           type="text"
@@ -97,7 +102,7 @@ const EditProfileModal = ({
         />
         {errors.name && <span className="modal__error">{errors.name}</span>}
       </label>
-      <label htmlFor="avatar" className="modal__label">
+      <label  className="modal__label">
         Avatar *
         <input
           type="url"

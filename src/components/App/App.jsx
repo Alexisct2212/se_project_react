@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header";
 import { coordinates, APIKey } from "../../utils/Constants";
@@ -204,7 +205,7 @@ function App() {
             <Route
               path="/profile"
               element={
-                isLoggedIn?(
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
                 <Profile
                   onCardClick={handleCardClick}
                   handleAddClick={handleAddClick}
@@ -213,7 +214,7 @@ function App() {
                   handleSignout={handleSignout}
                   handleCardLike={handleCardLike}
                 />
-                ):(<navigate to="/" replace/>)
+              </ProtectedRoute>
               }
             />
           </Routes>
