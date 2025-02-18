@@ -4,6 +4,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage":"https://www.wtwract.jumpingcrab.com",
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",

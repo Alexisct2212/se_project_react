@@ -124,3 +124,7 @@ export const defaultClothingItems = [
   };
   
   export const APIKey = "819809fed65bb0620c71459754fe4260";
+
+  export const baseUrl = process.env.NODE_ENV === "production" 
+  ? "https://api.wtwract.jumpingcrab.com"
+  : "http://localhost:3001";
